@@ -661,6 +661,8 @@ class TelaProcessando:
 
         self.bt_cancelar_TelaProcessando = 0
         self.bt_iniciar_TelaProcessando = 0
+        self.bt_voltar_prog_TelaProcessando = 0
+        self.bt_avancar_prog_TelaProcessando = 0
 
         self.tk_inter_TelaProcessando.title('Histo_V6')
         self.tk_inter_TelaProcessando.config(cursor=self.dado_TelaProcessando.cursor)
@@ -692,13 +694,23 @@ class TelaProcessando:
         
         self.bt_cancelar_TelaProcessando = CriaBotao("CANCELAR",16 , 145, 60, 13, 203, self.dado_TelaProcessando.green,self.canvas_TelaProcessando, self.tk_inter_TelaProcessando)
         self.bt_iniciar_TelaProcessando =  CriaBotao(self.dado_TelaProcessando.texto_iniciar_pausar,16 , 145, 60, 323, 203, self.dado_TelaProcessando.green,self.canvas_TelaProcessando, self.tk_inter_TelaProcessando)
+
+        # Botões de navegação
+        self.bt_voltar_prog_TelaProcessando = CriaBotao("<-", 16, 60, 60, 10, 10, self.dado_TelaProcessando.green, self.canvas_TelaProcessando, self.tk_inter_TelaProcessando)
+        self.bt_avancar_prog_TelaProcessando = CriaBotao("->", 16, 60, 60, self.dado_TelaProcessando.window_w - 70, 10, self.dado_TelaProcessando.green, self.canvas_TelaProcessando, self.tk_inter_TelaProcessando)
         
-        #Associa o método no envento click
+        # Associa o método no evento click
         self.canvas_TelaProcessando.tag_bind(self.bt_cancelar_TelaProcessando.objRec, '<ButtonPress-1>', self.onBotaoCancelar_TelaProcessando)
         self.canvas_TelaProcessando.tag_bind(self.bt_cancelar_TelaProcessando.objText, '<ButtonPress-1>', self.onBotaoCancelar_TelaProcessando)
         
         self.canvas_TelaProcessando.tag_bind(self.bt_iniciar_TelaProcessando.objRec, '<ButtonPress-1>', self.onBotaoInicar_TelaProcessando)
         self.canvas_TelaProcessando.tag_bind(self.bt_iniciar_TelaProcessando.objText, '<ButtonPress-1>', self.onBotaoInicar_TelaProcessando)
+
+        self.canvas_TelaProcessando.tag_bind(self.bt_voltar_prog_TelaProcessando.objRec, '<ButtonPress-1>', self.onBotaoVoltaProg_TelaProcessando)
+        self.canvas_TelaProcessando.tag_bind(self.bt_voltar_prog_TelaProcessando.objText, '<ButtonPress-1>', self.onBotaoVoltaProg_TelaProcessando)
+
+        self.canvas_TelaProcessando.tag_bind(self.bt_avancar_prog_TelaProcessando.objRec, '<ButtonPress-1>', self.onBotaoAvancaProg_TelaProcessando)
+        self.canvas_TelaProcessando.tag_bind(self.bt_avancar_prog_TelaProcessando.objText, '<ButtonPress-1>', self.onBotaoAvancaProg_TelaProcessando)
         
         self.canvas_TelaProcessando.pack()
         self.frame_TelaProcessando.pack()
@@ -708,6 +720,14 @@ class TelaProcessando:
 
     def onBotaoInicar_TelaProcessando(self, event):
         self.dado_TelaProcessando.aciona_buzzer = True
+
+    def onBotaoVoltaProg_TelaProcessando(self, event):
+        self.dado_TelaProcessando.aciona_buzzer = True
+        # Implementar lógica para voltar no progresso
+
+    def onBotaoAvancaProg_TelaProcessando(self, event):
+        self.dado_TelaProcessando.aciona_buzzer = True
+        # Implementar lógica para avançar no progresso
 
     def destroy_TelaProcessando(self):
         self.frame_TelaProcessando.destroy()

@@ -43,9 +43,9 @@ class Execucao(threading.Thread):
                 self._dado.controle_estah_acionado = False
                 self._tela.iniciaTelaAvisoErro()
                 self._tela.destroy_TelaProcessando()
-                self._io.magmetron(0)
+                self._io.magnetron(0)
                 time.sleep(1)
-                self._io.magmetron(0)
+                self._io.magnetron(0)
                 time.sleep(1)
             time.sleep(1)
 

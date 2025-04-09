@@ -597,6 +597,34 @@ class RotinaWitclear:
             self.set_tempo_banho(6)
             self.set_ganho_proporcional(self._dado.GANHO_PROPORCIONAL_WITCLEAR)
 
+    def set_nome_banho(self, nome):
+        self._nome_banho.append(nome)
+
+    def set_temperatura_banho(self, temperatura):
+        self._temperatura_banho.append(temperatura)
+        
+    def set_tempo_banho(self, tempo):
+        self._tempo_banho.append(tempo)
+
+    def set_ganho_proporcional(self, ganho):
+        self._ganho_proporcional.append(ganho)
+
+    @property
+    def nome_banho(self):
+        return self._nome_banho
+
+    @property
+    def temperatura_banho(self):
+        return self._temperatura_banho
+
+    @property
+    def tempo_banho(self):
+        return self._tempo_banho
+
+    @property
+    def ganho_proporcional(self):
+        return self._ganho_proporcional
+
 class RotinaPersonalizada:
     def __init__(self, dado):
         self._nome_banho = []
@@ -656,7 +684,7 @@ class RotinaExecutada:
             self._banho.iniciar( formol_eh_ativado = self._dado.formol_esta_ativado )
             self._dado._ativa_execucao = True
         elif self._dado.reagente == self._dado.REAGENTE_WITCLEAR:
-            self._banho = RotinaXilol(self._dado)
+            self._banho = RotinaWitclear(dado=self._dado)
             self._banho.iniciar( formol_eh_ativado = self._dado.formol_esta_ativado )
             self._dado._ativa_execucao = True
         elif self._dado.reagente == self._dado.REAGENTE_NENHUM:

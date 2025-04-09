@@ -56,8 +56,8 @@ class Dado:
         self._texto_percento_progresso_banho = "0%"
         self._cor_indicacao_processo = "#505050"
         
-        #self._cursor = 'cross'
-        self._cursor = 'none'
+        self._cursor = 'cross'
+        # self._cursor = 'none'
         self._nome_programa = 'Histo V6'
         self._texto_iniciar_pausar = 'INICIAR'
         self._nome_proximo_reagente = 'AlCOOL'

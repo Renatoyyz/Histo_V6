@@ -368,6 +368,22 @@ class Main(Telas.TelaPrincipal, Telas.TelaProcessoPadrao, Telas.TelaPersonalizad
             self.dado.set_texto_iniciar_pausar("INICIAR")
         self.canvas_TelaProcessando.itemconfig(self.bt_iniciar_TelaProcessando.objText, text=self.dado.texto_iniciar_pausar) 
 
+    def onBotaoVoltaProg_TelaProcessando(self, event):
+        super().onBotaoVoltaProg_TelaProcessando(event)
+        self.dado.index_banho -= 1
+        if self.dado.index_banho < 0:
+            self.dado.index_banho = 0
+        self.dado.set_texto_nome_processo(self.execucao._rotina.banho.nome_banho[self.dado.index_banho])
+        self.canvas_TelaProcessando.itemconfig(self.bttx_nome_processo_TelaProcessando.objText, text=self.dado.texto_nome_do_processo)
+
+    def onBotaoAvancaProg_TelaProcessando(self, event):
+        super().onBotaoAvancaProg_TelaProcessando(event)
+        self.dado.index_banho += 1
+        if self.dado.index_banho > len(self.execucao._rotina.banho.nome_banho) - 1:
+            self.dado.index_banho = len(self.execucao._rotina.banho.nome_banho) - 1
+        self.dado.set_texto_nome_processo(self.execucao._rotina.banho.nome_banho[self.dado.index_banho])
+        self.canvas_TelaProcessando.itemconfig(self.bttx_nome_processo_TelaProcessando.objText, text=self.dado.texto_nome_do_processo)
+
     #-----------------------------------------------------------------
     #TelaTrocaBanho
     def onBotaoOk_TelaTrocaBanho(self, event):
@@ -398,9 +414,11 @@ class Main(Telas.TelaPrincipal, Telas.TelaProcessoPadrao, Telas.TelaPersonalizad
         self.dado.set_reagente(self.dado.REAGENTE_NENHUM)
         self.dado.set_formol_ativado(False)
         self.dado.controle_estah_acionado = False
+        self.dado.index_banho = 0
         self.dado.set_texto_iniciar_pausar("INICIAR")
         self.iniciaPrincipal()
         self.destroy_TelaConfirmaCancelamento()
+        self.destroy_TelaProcessando()
 
     def onBotaoNao_TelaConfirmaCancelamento(self, event):
         super().onBotaoNao_TelaConfirmaCancelamento(event)
