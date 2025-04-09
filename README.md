@@ -10,7 +10,7 @@ Link para acesso a imagem do sistema: https://drive.google.com/drive/folders/1dw
 ```
 1 - Instalar Raspibian no cartão SD
 2 - Baixar o código do github no diretório home/pi:
-    git clone https://github.com/witcare-developer/Histo_V6.git
+    git clone https://github.com/Renatoyyz/Histo_V6.git
 3 - Configurar o raspberry para comunicação I2C para comunicação com sensor IR:
     Menu->Preferencias->Raspberry Pi Configuration->Interfaces->I2C=Enable.
     Reiniciar o Raspberry.
